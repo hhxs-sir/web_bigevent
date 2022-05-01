@@ -17,14 +17,12 @@ function getUserInfo(){
   method:'get',
   url:'/my/userinfo', 
   success:function(res){
-      console.log(res);
     if(res.status!==0){
         return layui.layer.msg('获取用户信息失败')
     }
     renderAvatar(res.data);
 },
 complete:function(res){
-    console.log(res);
     if(res.responseJSON.status===1&&
         res.responseJSON.message==='身份认证失败！'){
             localStorage.removeItem('token');
@@ -36,7 +34,6 @@ complete:function(res){
  
 }
 function renderAvatar(user){
-    console.log(user);
     var name=user.nickname||user.username;
     $("#welcome").html('欢迎&nbsp&nbsp'+name);
     if(user.user_pic!==null){
